@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<meta charset="utf-8">
+
+<title>Dropzone Simple Drag n Drop Fileupload</title>
+
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://rawgit.com/enyo/dropzone/master/dist/dropzone.js"></script>
+  <link rel="stylesheet" href="https://rawgit.com/enyo/dropzone/master/dist/dropzone.css">
+</head>
+
+<body>
+  <script> 
+    var temp1 =null, temp2 = null;   
+    Dropzone.options.singleAwesomeDropzone = {
+      addRemoveLinks: true,
+      maxFiles: 1
+    };
+
+    Dropzone.options.multiAwesomeDropzone = {
+      addRemoveLinks: true
+    };
+
+    Dropzone.autoDiscover = false;
+
+    $(function() {      
+      var sDropzone = new Dropzone("#singleAwesomeDropzone");
+      var mDropzone = new Dropzone("#multiAwesomeDropzone");
+      sDropzone.on("addedfile", function(file) {
+        if(temp1 != null) {
+          temp2 = file;
+          sDropzone.removeFile(temp1);
+          temp1 = temp2;
+          temp2 = null;
+        }
+        else
+          temp1 = file;        
+      });
+    })
+  </script>
+
+  <p>Single Dropzone FileUpLoad</p>
+  <form action="/file-upload" class="dropzone" id="singleAwesomeDropzone">
+  </form>
+  <p>Multi Dropzone FileUpLoad</p>
+  <form action="/file-upload" class="dropzone" id="multiAwesomeDropzone">
+  </form>
+</body>
+
+
