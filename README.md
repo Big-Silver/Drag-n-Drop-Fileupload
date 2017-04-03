@@ -1,7 +1,6 @@
 # Drag-n-Drop-Fileupload
 
 <img width="900" src="img/dropzone.png" border="0" />
-Fileupload, Drag n Drop
 
 ## About
 This project is the Drag and Drop Fileupload using Dropzone.js.
